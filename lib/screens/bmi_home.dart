@@ -35,6 +35,7 @@ class _BmiHomeState extends State<BmiHome> {
                   Container(
                     width: 60,
                     child: TextField(
+                      key: ValueKey("height"),
                       textAlign: TextAlign.center,
                       onChanged: widget._bloc.heightChanged,
                       controller: widget._bloc.heightTextController,
@@ -52,6 +53,7 @@ class _BmiHomeState extends State<BmiHome> {
                   Container(
                     width: 60,
                     child: TextField(
+                      key: ValueKey("weight"),
                       textAlign: TextAlign.center,
                       onChanged: widget._bloc.weightChanged,
                       controller: widget._bloc.weightTextController,
@@ -61,10 +63,14 @@ class _BmiHomeState extends State<BmiHome> {
               ),
             ),
             Container(height: 10),
-            RaisedButton(
-              child: Text("Submit"),
-              onPressed: null,
-            ),
+            StreamBuilder<bool>(
+                stream: widget._bloc.buttonEnabled,
+                builder: (context, snapshot) {
+                  return RaisedButton(
+                    child: Text("Submit"),
+                    onPressed: snapshot?.data == true ? () => widget._bloc.submitDetails() : null,
+                  );
+                }),
           ],
         ),
       ),
