@@ -1,5 +1,3 @@
-# bmi_calculator_flutter
+# BMI Calculator in Flutter
 
-Flutter app to calculate a BMI
-
-## This app talks to an api to calculate a BMI
+An app that talks to an api to calculate a BMI.
