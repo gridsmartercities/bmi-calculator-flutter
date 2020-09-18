@@ -47,8 +47,8 @@ class BmiHomeBloc {
     _weightStreamController.close();
   }
 
-  submitDetails() {
-
+  submitDetails() async {
+    await _api.submitDetails(_heightWeight.height, _heightWeight.weight);
   }
 }
 
